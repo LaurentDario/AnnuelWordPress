@@ -81,7 +81,7 @@ add_action( 'init', 'cpt_student', 0 );
 add_filter( 'rwmb_meta_boxes', 'students_meta_boxes' );
 function students_meta_boxes( $meta_boxes ) {
 	$meta_boxes[] = array(
-		'title'      => __( 'Projects', 'annuel2016' ),
+		'title'      => __( 'Project #1', 'annuel2016' ),
 		'post_types' => 'student',
 		'fields'     => array(
 			array(
@@ -95,19 +95,8 @@ function students_meta_boxes( $meta_boxes ) {
 				'type' => 'textarea',
 			),
 			array(
-				'name'             => __( 'Project Images', 'annuel2016' ),
-				'id'               => "project_images_1",
-				'type'             => 'image_advanced',
-				'max_file_uploads' => 4,
-			),
-			array(
-				'id'   => 'project_name_2',
-				'name' => __( 'Project #2', 'annuel2016' ),
-				'type' => 'text',
-			),
-			array(
-				'id'   => 'project_description_1',
-				'name' => __( 'Description', 'annuel2016' ),
+				'id'   => 'project_coequipiers_1',
+				'name' => __( 'Professeurs et Coéquipiers', 'annuel2016' ),
 				'type' => 'textarea',
 			),
 			array(
@@ -115,6 +104,43 @@ function students_meta_boxes( $meta_boxes ) {
 				'id'               => "project_images_1",
 				'type'             => 'image_advanced',
 				'max_file_uploads' => 4,
+			),
+			array(
+				'id'   => 'project_video_1',
+				'name' => 'YouTube Video',
+				'type' => 'oembed',
+			)
+		)
+	);
+	$meta_boxes[] = array(
+		'title'      => __( 'Project #2', 'annuel2016' ),
+		'post_types' => 'student',
+		'fields'     => array(
+			array(
+				'id'   => 'project_name_2',
+				'name' => __( 'Project #2', 'annuel2016' ),
+				'type' => 'text',
+			),
+			array(
+				'id'   => 'project_description_2',
+				'name' => __( 'Description', 'annuel2016' ),
+				'type' => 'textarea',
+			),
+			array(
+				'id'   => 'project_coequipiers_2',
+				'name' => __( 'Professeurs et Coéquipiers', 'annuel2016' ),
+				'type' => 'textarea',
+			),
+			array(
+				'name'             => __( 'Project Images', 'annuel2016' ),
+				'id'               => "project_images_2",
+				'type'             => 'image_advanced',
+				'max_file_uploads' => 4,
+			),
+			array(
+				'id'   => 'project_video_2',
+				'name' => 'YouTube Video',
+				'type' => 'oembed',
 			)
 		),
 	);
