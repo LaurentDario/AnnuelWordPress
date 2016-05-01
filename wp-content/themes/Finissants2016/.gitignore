@@ -56,3 +56,6 @@ temp/
 
 *.codekit
 *.scssc
+
+wp-config.php
+wp-config-staging.php
