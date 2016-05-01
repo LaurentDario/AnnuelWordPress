@@ -19,6 +19,14 @@ GENERAL STYLES
 
 body {}
 
+.is-hidden--desktop{
+	display: none;
+}
+
+.is-hidden--mobile{
+	display: block;
+}
+
 /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -33,14 +41,38 @@ HEADER STYLES
 
 .header {}
 
-	#logo {}
+	#logo {
+
+		float: left;
+	}
 
 /*********************
 NAVIGATION STYLES
 *********************/
 
+.search{
+	display: block;
+}
+.menu-toggle{
+	display: none;
+}
+nav{
+	position: relative;
+	top: auto;
+	right: auto;
+	transform: none;
+	transition: none;
+	width: 100%;
+	background: transparent;
+	height: auto;
+	padding: 0;
+	.nav-close{
+		display: none;
+	}
+}
 .nav {
 	border: 0;
+	display: block;
 	ul {
 		background:$black;
 		margin-top:0;
@@ -48,6 +80,7 @@ NAVIGATION STYLES
 	li {
 		float: left;
 		position: relative;
+		width: 16%;
 
 		a {
 			border-bottom: 0;
@@ -56,9 +89,8 @@ NAVIGATION STYLES
 			you can use hover styles here even though this size
 			has the possibility of being a mobile device.
 			*/
-			&:hover, &:focus {
-				color: $white;
-				text-decoration: underline;
+			&.active{
+				color: blue;
 			}
 		}
 
@@ -285,3 +317,26 @@ mobile. Make sure to double check these!
 	}
 } /* end .footer-links */
 
+
+#main{
+	article.hentry {
+		max-width: 300px;
+		min-width: 200px;
+		min-height: 200px;
+		width: calc(100% / 6);
+	}
+}
+
+
+.student-popup{
+	.student-popup--content{
+		.student{
+			position: fixed;
+			width: 25%;
+			height: 99%;
+			left: 85%;
+			top: 0%;
+			transform: translateX( -48% );
+		}
+	}
+}

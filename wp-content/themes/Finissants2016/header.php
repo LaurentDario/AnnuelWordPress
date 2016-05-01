@@ -40,22 +40,36 @@
 
 	</head>
 
-	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+	<body <?php body_class((is_single() ? 'popup--open': '')); ?> itemscope itemtype="http://schema.org/WebPage">
+
+		<div class="loader">
+			<div class="sk-folding-cube">
+				<div class="sk-cube1 sk-cube"></div>
+				<div class="sk-cube2 sk-cube"></div>
+				<div class="sk-cube4 sk-cube"></div>
+				<div class="sk-cube3 sk-cube"></div>
+			</div>
+		</div>
 
 		<div id="container">
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
 				<div id="inner-header" class="wrap cf">
+					<div class="top-header cf">
+						<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+						<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow">Annuel<sup>2016</sup> de design</a></p>
 
-					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
-					<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-
+						<div class="search">
+							<input type="text" class="quicksearch" placeholder="Search" />
+						</div>
+					</div>
 					<?php // if you'd like to use the site description you can un-comment it below ?>
 					<?php // bloginfo('description'); ?>
 
-
+					<div class="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
 					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<div class="nav-close"><i class="fa fa-times" aria-hidden="true"></i></div>
 						<?php wp_nav_menu(array(
     					         'container' => false,                           // remove nav container
     					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)

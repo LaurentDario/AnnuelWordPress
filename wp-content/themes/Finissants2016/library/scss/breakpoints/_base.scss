@@ -17,12 +17,30 @@ GENERAL STYLES
 
 body {
 	font-family: $lato;
-	font-size: 100%;
+	font-size: 100%; // 16px
 	line-height: 1.5;
 	color: $text-color;
 	background-color: $gray;
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
+}
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.is-hidden{
+	display: none;
+}
+
+.is-hidden--desktop{
+	display: block;
+}
+
+.is-hidden--mobile{
+	display: none;
 }
 
 /********************
@@ -73,6 +91,93 @@ LAYOUT & GRID STYLES
 .wrap {
 	width: 96%;
 	margin: 0 auto;
+}
+
+#main{
+	width: 100%;
+	background: $black;
+	article.hentry {
+		width: 50%;
+		margin: 0;
+		padding: 0;
+		font-size: 0;
+		border: 0;
+		float: left;
+		cursor: pointer;
+		img {
+			width: 100%;
+			height: auto;
+		}
+		header {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			display: none;
+			z-index: 999;
+			text-align: center;
+			-webkit-transition: all 333ms;
+			-moz-transition: all 333ms;
+			-ms-transition: all 333ms;
+			-o-transition: all 333ms;
+			transition: all 333ms;
+			background: rgba(22, 45, 73, 0.4);
+			.entry-title{
+				width: 100%;
+				height: 100%;
+				display: table;
+				font-size: 1.500rem;
+				line-height: 1.500rem;
+				padding: 0 7px;
+				color: $white;
+				.vertical-align{
+					vertical-align: middle;
+					display: table-cell;
+					opacity: 0;
+					-webkit-transition: all 333ms;
+					-moz-transition: all 333ms;
+					-ms-transition: all 333ms;
+					-o-transition: all 333ms;
+					transition: all 333ms;
+					-webkit-transform: translateY(20px);
+					-moz-transform: translateY(20px);
+					-ms-transform: translateY(20px);
+					-o-transform: translateY(20px);
+					transform: translateY(20px);
+					a{
+						color: white;
+					}
+				}
+			}
+		}
+		&:hover{
+			header{
+				opacity: 1;
+				.entry-title{
+					.vertical-align{
+						opacity: 1;
+						-webkit-transform: translateY(0);
+						-moz-transform: translateY(0);
+						-ms-transform: translateY(0);
+						-o-transform: translateY(0);
+						transform: translateY(0);
+					}
+				}
+			}
+		}
+	}
+}
+
+body.is-loaded{
+	#main{
+		article.hentry{
+			header{
+				display: block;
+			}
+		}
+	}
 }
 
 /*********************
@@ -133,7 +238,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-	font-size: 1.125em;
+	font-size: 1.45em;
 }
 
 h4, .h4 {
@@ -153,15 +258,30 @@ HEADER STYLES
 *********************/
 
 .header {
-	background-color: $black;
+	background-color: $white;
 }
 
 	#logo {
-		margin: 0.75em 0;
+		margin: 0.75em auto;
+		width: 230px;
+		line-height: 40px;
+		text-align: center;
 
 		a {
-			color: $white;
+			color: $black;
+			sup{
+				padding-left: 6px;
+				top: -0.2em;
+				font-size: 20px;
+			}
 		}
+	}
+
+	.search{
+		float: right;
+		margin: 50px 0;
+		width: 300px;
+		display: none;
 	}
 
 /*********************
@@ -176,17 +296,50 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 
+.menu-toggle{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 24px;
+	color: $dark-blue;
+	cursor: pointer;
+}
+nav{
+	&.is-opened{
+		transform: translateX(0);
+	}
+	position: fixed;
+	top: 0;
+	right: 0;
+	transform: translateX(100%);
+	transition: transform 666ms;
+	width: 75%;
+	background: $white;
+	height: 100vh;
+	padding: 25px;
+	z-index: 99;
+	.nav-close{
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 24px;
+		cursor: pointer;
+	}
+}
 .nav {
 	border-bottom: 0;
 	margin: 0;
 
 	li {
+		width: 100%;
+		float: left;
 
 		a {
 			display: block;
-			color: $white;
+			color: $blue;
 			text-decoration: none;
 			padding: 0.75em;
+			border-bottom: 2px white solid;
 
 			/*
 			remember this is for mobile ONLY, so there's no need
@@ -195,7 +348,13 @@ and more scalable.
 			keep this file as small as possible!
 			*/
 			&:hover, &:focus {
+				color: $dark-blue;
+			}
+		}
 
+		&:active,&.active{
+			a{
+				text-decoration: underline;
 			}
 		}
 
@@ -212,11 +371,13 @@ and more scalable.
 		*/
 		ul.sub-menu,
 		ul.children {
-
+			margin: 0;
 			li {
+				float: left;
+				margin: 0;
 
 				a {
-					padding-left: 30px;
+					padding:0 0.75em;
 
 					&:hover,
 					&:focus {}
@@ -251,24 +412,15 @@ and more scalable.
 POSTS & CONTENT STYLES
 *********************/
 
-#content {
-	margin-top: 1.5em;
-}
-
 		.hentry {
-			background-color: $white;
-			border-radius: 3px;
-			margin-bottom: 1.5em;
-			border: 1px solid $border-color;
 
 			header {
-				border-bottom: 1px solid $light-gray;
 				padding: 1.5em;
+				opacity: 0;
 			}
 
 			footer {
 				padding: 1.5em;
-				border-top: 1px solid $light-gray;
 
 				p {
 					margin: 0;
@@ -862,8 +1014,8 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
-	background-color: $black;
-	color: $light-gray;
+	background-color: $white;
+	color: $dark-blue;
 }
 
 	/*
@@ -887,3 +1039,216 @@ FOOTER STYLES
 
 
 	.copyright {}
+
+
+
+/*********************
+LIGHTBOX
+*********************/
+.student-popup{
+	&.is-opened{
+		display: block;
+	}
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0, 0.7);
+	z-index: 99999;
+	.student-popup--content{
+		background: white;
+		width: 96%;
+		max-width: 1300px;
+		margin: 1vh auto;
+		overflow-y: auto;
+		height: 98vh;
+		position: relative;
+
+		.student-popup--close{
+			position: fixed;
+			top: 1%;
+			right: 2%;
+			font-size: 24px;
+			height: 34px;
+			width: 30px;
+			text-align: center;
+			padding: 3px 0;
+			background: $white;
+			color: $dark-blue;
+			z-index: 999;
+		}
+		.student{
+			padding: 15px;
+			font-size: 13px;
+			line-height: 15px;
+			.student--avatar{
+				width: 100%;
+				height: auto;
+			}
+			.project{
+				position: absolute;
+				bottom: 20px;
+				min-height: 150px;
+			}
+			h1{ // Name
+				margin: 0.50rem 0 0.25rem 0;
+			}
+			p{
+				margin: 0.30rem;
+			}
+		}
+		.projects{
+			.project--name,.project--credits,.project--description{
+				padding: 0 15px;
+			}
+			.project:first-child{
+				margin-bottom: 25px;
+			}
+			.project--image{
+				font-size: 0;
+				img{
+					width: 100%;
+				}
+			}
+			.project--video{
+				font-size: 0;
+				iframe{
+					width: 100%;
+				}
+			}
+		}
+
+		img{
+			max-width: 100%;
+			height: auto;
+		}
+	}
+}
+
+.project--credits{
+	font-size: 0.65rem;
+	font-style: italic;
+}
+
+body.popup--open{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,.6);
+	z-index: 1001;
+}
+
+// Loader
+.loader{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: $dark-blue;
+	z-index: 99999;
+	transition: visibility 0s 1s, opacity 1s linear, margin-top 0s 1s;
+}
+body.is-loaded{
+	.loader{
+		opacity: 0;
+		margin-top: -100%;
+	}
+}
+
+.sk-folding-cube {
+	margin: 20px auto;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	top: 50%;
+	-webkit-transform: rotateZ(45deg);
+	transform: rotateZ(45deg) translateY(-50%);
+}
+
+.sk-folding-cube .sk-cube {
+	float: left;
+	width: 50%;
+	height: 50%;
+	position: relative;
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.sk-folding-cube .sk-cube:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $white;
+	-webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+	animation: sk-foldCubeAngle 2.4s infinite linear both;
+	-webkit-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+	-webkit-transform: scale(1.1) rotateZ(90deg);
+	transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+	-webkit-transform: scale(1.1) rotateZ(180deg);
+	transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+	-webkit-transform: scale(1.1) rotateZ(270deg);
+	transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+	-webkit-animation-delay: 0.3s;
+	animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+	-webkit-animation-delay: 0.6s;
+	animation-delay: 0.6s;
+}
+.sk-folding-cube .sk-cube4:before {
+	-webkit-animation-delay: 0.9s;
+	animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+	0%, 10% {
+		-webkit-transform: perspective(140px) rotateX(-180deg);
+		transform: perspective(140px) rotateX(-180deg);
+		opacity: 0;
+	} 25%, 75% {
+		  -webkit-transform: perspective(140px) rotateX(0deg);
+		  transform: perspective(140px) rotateX(0deg);
+		  opacity: 1;
+	  } 90%, 100% {
+			-webkit-transform: perspective(140px) rotateY(180deg);
+			transform: perspective(140px) rotateY(180deg);
+			opacity: 0;
+		}
+}
+
+@keyframes sk-foldCubeAngle {
+	0%, 10% {
+		-webkit-transform: perspective(140px) rotateX(-180deg);
+		transform: perspective(140px) rotateX(-180deg);
+		opacity: 0;
+	} 25%, 75% {
+		  -webkit-transform: perspective(140px) rotateX(0deg);
+		  transform: perspective(140px) rotateX(0deg);
+		  opacity: 1;
+	  } 90%, 100% {
+			-webkit-transform: perspective(140px) rotateY(180deg);
+			transform: perspective(140px) rotateY(180deg);
+			opacity: 0;
+		}
+}

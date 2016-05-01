@@ -250,6 +250,11 @@ check your menus here. do they look good?
 do they need tweaking?
 */
 /* end .footer-links */
+/* line 120, ../scss/breakpoints/_481up.scss */
+#main article.hentry {
+  width: 33.3%;
+}
+
 /******************************************************************
 Site Name:
 Author:
@@ -266,10 +271,20 @@ come into play. Have fun!
 /*********************
 GENERAL STYLES
 *********************/
+/* line 22, ../scss/breakpoints/_768up.scss */
+.is-hidden--desktop {
+  display: none;
+}
+
+/* line 26, ../scss/breakpoints/_768up.scss */
+.is-hidden--mobile {
+  display: block;
+}
+
 /*********************
 LAYOUT & GRID STYLES
 *********************/
-/* line 26, ../scss/breakpoints/_768up.scss */
+/* line 34, ../scss/breakpoints/_768up.scss */
 .wrap {
   width: 760px;
 }
@@ -277,31 +292,65 @@ LAYOUT & GRID STYLES
 /*********************
 HEADER STYLES
 *********************/
+/* line 44, ../scss/breakpoints/_768up.scss */
+#logo {
+  float: left;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
-/* line 42, ../scss/breakpoints/_768up.scss */
+/* line 53, ../scss/breakpoints/_768up.scss */
+.search {
+  display: block;
+}
+
+/* line 56, ../scss/breakpoints/_768up.scss */
+.menu-toggle {
+  display: none;
+}
+
+/* line 59, ../scss/breakpoints/_768up.scss */
+nav {
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: none;
+  transition: none;
+  width: 100%;
+  background: transparent;
+  height: auto;
+  padding: 0;
+}
+/* line 69, ../scss/breakpoints/_768up.scss */
+nav .nav-close {
+  display: none;
+}
+
+/* line 73, ../scss/breakpoints/_768up.scss */
 .nav {
   border: 0;
+  display: block;
   /* end .menu ul li */
   /* highlight current page */
   /* end current highlighters */
 }
-/* line 44, ../scss/breakpoints/_768up.scss */
+/* line 76, ../scss/breakpoints/_768up.scss */
 .nav ul {
-  background: #323944;
+  background: #000;
   margin-top: 0;
 }
-/* line 48, ../scss/breakpoints/_768up.scss */
+/* line 80, ../scss/breakpoints/_768up.scss */
 .nav li {
   float: left;
   position: relative;
+  width: 16%;
   /*
   plan your menus and drop-downs wisely.
   */
   /* showing sub-menus */
 }
-/* line 52, ../scss/breakpoints/_768up.scss */
+/* line 85, ../scss/breakpoints/_768up.scss */
 .nav li a {
   border-bottom: 0;
   /*
@@ -309,12 +358,11 @@ NAVIGATION STYLES
   has the possibility of being a mobile device.
   */
 }
-/* line 59, ../scss/breakpoints/_768up.scss */
-.nav li a:hover, .nav li a:focus {
-  color: #fff;
-  text-decoration: underline;
+/* line 92, ../scss/breakpoints/_768up.scss */
+.nav li a.active {
+  color: blue;
 }
-/* line 71, ../scss/breakpoints/_768up.scss */
+/* line 103, ../scss/breakpoints/_768up.scss */
 .nav li ul.sub-menu,
 .nav li ul.children {
   margin-top: 0;
@@ -325,7 +373,7 @@ NAVIGATION STYLES
   z-index: 8999;
   /* highlight sub-menu current page */
 }
-/* line 80, ../scss/breakpoints/_768up.scss */
+/* line 112, ../scss/breakpoints/_768up.scss */
 .nav li ul.sub-menu li,
 .nav li ul.children li {
   /*
@@ -334,7 +382,7 @@ NAVIGATION STYLES
   for usability. k, bai.
   */
 }
-/* line 82, ../scss/breakpoints/_768up.scss */
+/* line 114, ../scss/breakpoints/_768up.scss */
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 10px;
@@ -343,18 +391,18 @@ NAVIGATION STYLES
   width: 180px;
   border-bottom: 1px solid #ccc;
 }
-/* line 99, ../scss/breakpoints/_768up.scss */
+/* line 131, ../scss/breakpoints/_768up.scss */
 .nav li ul.sub-menu li:last-child a,
 .nav li ul.children li:last-child a {
   border-bottom: 0;
 }
-/* line 109, ../scss/breakpoints/_768up.scss */
+/* line 141, ../scss/breakpoints/_768up.scss */
 .nav li ul.sub-menu li ul,
 .nav li ul.children li ul {
   top: 0;
   left: 100%;
 }
-/* line 124, ../scss/breakpoints/_768up.scss */
+/* line 156, ../scss/breakpoints/_768up.scss */
 .nav li:hover > ul {
   top: auto;
   visibility: visible;
@@ -364,28 +412,28 @@ NAVIGATION STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 144, ../scss/breakpoints/_768up.scss */
+/* line 176, ../scss/breakpoints/_768up.scss */
 .sidebar {
   margin-top: 2.2em;
 }
 
-/* line 148, ../scss/breakpoints/_768up.scss */
+/* line 180, ../scss/breakpoints/_768up.scss */
 .widgettitle {
   border-bottom: 2px solid #444;
   margin-bottom: 0.75em;
 }
 
-/* line 153, ../scss/breakpoints/_768up.scss */
+/* line 185, ../scss/breakpoints/_768up.scss */
 .widget {
   padding: 0 10px;
   margin: 2.2em 0;
 }
-/* line 158, ../scss/breakpoints/_768up.scss */
+/* line 190, ../scss/breakpoints/_768up.scss */
 .widget ul li {
   margin-bottom: 0.75em;
   /* deep nesting */
 }
-/* line 166, ../scss/breakpoints/_768up.scss */
+/* line 198, ../scss/breakpoints/_768up.scss */
 .widget ul li ul {
   margin-top: 0.75em;
   padding-left: 1em;
@@ -410,7 +458,7 @@ you'll probably need to do quite a bit
 of overriding here if you styled them for
 mobile. Make sure to double check these!
 */
-/* line 274, ../scss/breakpoints/_768up.scss */
+/* line 306, ../scss/breakpoints/_768up.scss */
 .footer-links ul li {
   /*
   be careful with the depth of your menus.
@@ -420,6 +468,24 @@ mobile. Make sure to double check these!
 }
 
 /* end .footer-links */
+/* line 322, ../scss/breakpoints/_768up.scss */
+#main article.hentry {
+  max-width: 300px;
+  min-width: 200px;
+  min-height: 200px;
+  width: calc(100% / 6);
+}
+
+/* line 333, ../scss/breakpoints/_768up.scss */
+.student-popup .student-popup--content .student {
+  position: fixed;
+  width: 25%;
+  height: 99%;
+  left: 85%;
+  top: 0%;
+  transform: translateX(-48%);
+}
+
 /******************************************************************
 Site Name:
 Author:
@@ -432,7 +498,7 @@ be seen on the Desktop.
 ******************************************************************/
 /* line 12, ../scss/breakpoints/_1030up.scss */
 .wrap {
-  width: 1040px;
+  width: 1200px;
 }
 
 /*

@@ -70,6 +70,13 @@ function cpt_student() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
+		'show_in_rest'       		=> true,
+		'rest_base'          		=> 'student-api',
+		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		'rewrite' => array(
+			'slug'	=> 'student',
+			'with_front'  => false,
+		)
 	);
 	register_post_type( 'student', $args );
 
@@ -95,7 +102,7 @@ function students_meta_boxes( $meta_boxes ) {
 				'type' => 'textarea',
 			),
 			array(
-				'id'   => 'project_coequipiers_1',
+				'id'   => 'project_credits_1',
 				'name' => __( 'Professeurs et Coéquipiers', 'annuel2016' ),
 				'type' => 'textarea',
 			),
@@ -127,7 +134,7 @@ function students_meta_boxes( $meta_boxes ) {
 				'type' => 'textarea',
 			),
 			array(
-				'id'   => 'project_coequipiers_2',
+				'id'   => 'project_credits_2',
 				'name' => __( 'Professeurs et Coéquipiers', 'annuel2016' ),
 				'type' => 'textarea',
 			),
@@ -147,4 +154,69 @@ function students_meta_boxes( $meta_boxes ) {
 	return $meta_boxes;
 }
 
-?>
+/**
+ * Add the field "spaceship" to REST API responses for posts read and write
+ */
+add_action( 'rest_api_init', 'custom_meta' );
+function custom_meta() {
+	register_rest_field( 'student',
+		'projects',
+		array(
+			'get_callback'    => 'get_projects',
+			'schema'          => null
+		)
+	);
+	register_rest_field( 'student',
+		'avatar',
+		array(
+			'get_callback'    => 'get_student_avatar',
+			'schema'          => null
+		)
+	);
+}
+
+
+/**
+ * Handler for getting custom field data. WP-API
+ *
+ * @since 0.1.0
+ *
+ * @param array $object The object from the response
+ * @param string $field_name Name of field
+ * @param WP_REST_Request $request Current request
+ *
+ * @return mixed
+ */
+function get_projects( $object, $field_name, $request ) {
+	$projects = array(
+		array(
+			'title' => get_post_meta( $object['id'], 'project_name_1', true),
+			'description' => get_post_meta( $object['id'], 'project_description_1', true),
+			'credits' => get_post_meta( $object['id'], 'project_credits_1', true),
+			'images' => array(),
+			'video' => wp_oembed_get(get_post_meta( $object['id'], 'project_video_1', true)),
+		),
+		array(
+			'title' => get_post_meta( $object['id'], 'project_name_2', true),
+			'description' => get_post_meta( $object['id'], 'project_description_2', true),
+			'credits' => get_post_meta( $object['id'], 'project_credits_2', true),
+			'images' => array(),
+			'video' => wp_oembed_get(get_post_meta( $object['id'], 'project_video_2', true)),
+		)
+	);
+	$images_p1 = get_post_meta( $object['id'],'project_images_1');
+	$images_p2 = get_post_meta( $object['id'],'project_images_2');
+	foreach($images_p1 as $image){
+		$projects[0]['images'][] = wp_get_attachment_image_src($image, 'full-width')[0];
+	}
+	foreach($images_p2 as $image){
+		$projects[1]['images'][] = wp_get_attachment_image_src($image, 'full-width')[0];
+	}
+	return $projects;
+}
+
+
+function get_student_avatar( $object, $field_name, $request ){
+	$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $object['id'] ), 'large' );
+	return $thumbnail[0];
+}

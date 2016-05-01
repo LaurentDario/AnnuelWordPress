@@ -75,6 +75,7 @@ if ( ! isset( $content_width ) ) {
 // Thumbnail sizes
 add_image_size( 'bones-thumb-600', 600, 150, true );
 add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'home-portrait', 300, 300, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -243,5 +244,8 @@ function bones_fonts() {
 }
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
+
+add_filter( 'post_type_link', 'na_remove_slug', 10, 3 );
+add_action( 'pre_get_posts', 'na_parse_request' );
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

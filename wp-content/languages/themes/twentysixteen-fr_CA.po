@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.1.0-alpha\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Twenty Sixteen\n"
 
 #. Description of the plugin/theme
@@ -19,16 +19,16 @@ msgid "Twenty Sixteen"
 msgstr "Twenty Sixteen"
 
 #. translators: %s: Name of current post
+#: inc/template-tags.php:184 template-parts/content.php:28
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Continuer la lecture de<span class=\"screen-reader-text\"> &laquo;&nbsp;%s&nbsp;&rquo;</span>"
+
+#. translators: %s: Name of current post
 #: image.php:84 template-parts/content-page.php:37
 #: template-parts/content-search.php:28 template-parts/content-search.php:43
 #: template-parts/content-single.php:45 template-parts/content.php:49
 msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Modifier<span class=\"screen-reader-text\"> \"%s\"</span>"
-
-#. translators: %s: Name of current post
-#: inc/template-tags.php:184 template-parts/content.php:28
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr "Continuer la lecture de<span class=\"screen-reader-text\"> &laquo;&nbsp;%s&nbsp;&rquo;</span>"
 
 #: inc/customizer.php:283
 msgid "Red"
@@ -55,13 +55,13 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "Rechercher&nbsp;:"
 
-#: footer.php:17
-msgid "Footer Primary Menu"
-msgstr "Menu principal de pied"
-
 #: footer.php:28
 msgid "Footer Social Links Menu"
 msgstr "Menu de liens sociaux de pied"
+
+#: footer.php:17
+msgid "Footer Primary Menu"
+msgstr "Menu principal de pied"
 
 #: functions.php:158
 msgid "Add widgets here to appear in your sidebar."
@@ -135,14 +135,14 @@ msgctxt "Used before publish date."
 msgid "Posted on"
 msgstr "Publié le"
 
-#: inc/template-tags.php:50
-msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
-msgstr "Laisser un commentaire<span class=\"screen-reader-text\"> sur %s</span>"
-
 #: inc/template-tags.php:38
 msgctxt "Used before post format."
 msgid "Format"
 msgstr "Format"
+
+#: inc/template-tags.php:50
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Laisser un commentaire<span class=\"screen-reader-text\"> sur %s</span>"
 
 #: inc/template-tags.php:25
 msgctxt "Used before post author name."
@@ -161,10 +161,6 @@ msgstr "Gris"
 msgid "Dark"
 msgstr "Sombre"
 
-#: inc/customizer.php:184
-msgid "Secondary Text Color"
-msgstr "Seconde couleur du texte"
-
 #: inc/customizer.php:253
 msgid "Default"
 msgstr "Valeur par défaut"
@@ -173,26 +169,30 @@ msgstr "Valeur par défaut"
 msgid "Main Text Color"
 msgstr "Couleur du texte principal"
 
-#: inc/customizer.php:145
-msgid "Page Background Color"
-msgstr "Couleur du fond de page"
+#: inc/customizer.php:184
+msgid "Secondary Text Color"
+msgstr "Seconde couleur du texte"
 
 #: inc/customizer.php:160
 msgid "Link Color"
 msgstr "Couleur des liens"
 
-#: inc/customizer.php:130
-msgid "Base Color Scheme"
-msgstr "Jeu de couleurs de base"
-
-#: inc/back-compat.php:41 inc/back-compat.php:53 inc/back-compat.php:68
-msgid "Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again."
-msgstr "Twenty Sixteen ne fonctionne qu'à partir de WordPress 4.4. Vous utilisez la version %s. Veuillez mettre à jour et réessayer."
+#: inc/customizer.php:145
+msgid "Page Background Color"
+msgstr "Couleur du fond de page"
 
 #: image.php:102 single.php:29
 msgctxt "Parent post link"
 msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%title</span>"
 msgstr "<span class=\"meta-nav\">Publié dans</span><span class=\"post-title\">%title</span>"
+
+#: inc/back-compat.php:41 inc/back-compat.php:53 inc/back-compat.php:68
+msgid "Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again."
+msgstr "Twenty Sixteen ne fonctionne qu'à partir de WordPress 4.4. Vous utilisez la version %s. Veuillez mettre à jour et réessayer."
+
+#: inc/customizer.php:130
+msgid "Base Color Scheme"
+msgstr "Jeu de couleurs de base"
 
 #: image.php:73
 msgctxt "Used before full size attachment link."
@@ -220,21 +220,13 @@ msgstr "Menu"
 msgid "Skip to content"
 msgstr "Aller au contenu principal"
 
-#: functions.php:285
-msgid "collapse child menu"
-msgstr "fermer le sous-menu"
-
 #: functions.php:284
 msgid "expand child menu"
 msgstr "ouvrir le sous-menu"
 
-#. translators: If there are characters in your language that are not supported
-#. by Montserrat, translate this to 'off'. Do not translate into your own
-#. language.
-#: functions.php:208
-msgctxt "Montserrat font: on or off"
-msgid "on"
-msgstr "on"
+#: functions.php:285
+msgid "collapse child menu"
+msgstr "fermer le sous-menu"
 
 #. translators: If there are characters in your language that are not supported
 #. by Merriweather, translate this to 'off'. Do not translate into your own
@@ -244,17 +236,17 @@ msgctxt "Merriweather font: on or off"
 msgid "on"
 msgstr "activée"
 
-#: functions.php:176
-msgid "Content Bottom 2"
-msgstr "Contenu du bas 2"
+#. translators: If there are characters in your language that are not supported
+#. by Montserrat, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:208
+msgctxt "Montserrat font: on or off"
+msgid "on"
+msgstr "on"
 
 #: functions.php:168 functions.php:178
 msgid "Appears at the bottom of the content on posts and pages."
 msgstr "S’affiche en bas du contenu des articles et des pages."
-
-#: functions.php:166
-msgid "Content Bottom 1"
-msgstr "Contenu du bas 1"
 
 #. translators: If there are characters in your language that are not supported
 #. by Inconsolata, translate this to 'off'. Do not translate into your own
@@ -263,6 +255,14 @@ msgstr "Contenu du bas 1"
 msgctxt "Inconsolata font: on or off"
 msgid "on"
 msgstr "on"
+
+#: functions.php:166
+msgid "Content Bottom 1"
+msgstr "Contenu du bas 1"
+
+#: functions.php:176
+msgid "Content Bottom 2"
+msgstr "Contenu du bas 2"
 
 #: functions.php:156
 msgid "Sidebar"
